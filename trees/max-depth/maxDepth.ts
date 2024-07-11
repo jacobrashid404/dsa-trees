@@ -6,7 +6,15 @@ import { TreeNodeNum } from "../common/tree";
  **/
 
 function maxDepth(node: TreeNodeNum | null): number {
-  return 42;
+  if (node === null) return 0;
+
+  let maxLength = 0;
+  for (const child of node.children) {
+    const currLength = maxDepth(child);
+    maxLength = Math.max(maxLength, currLength);
+  }
+
+  return maxLength + 1;
 }
 
 export { maxDepth };
